@@ -8,9 +8,8 @@ import java.util.Objects;
 public class Armstrong {
   public static boolean isArmstrong(long nb) {
     String str = String.valueOf(nb);
-    return nb == List.of(String.valueOf(nb).toCharArray())
-        .toCharSeq()
-        .foldLeft(0L, (acc, v) -> acc + Stream.continually(v).take(str.length()).foldLeft(1L, (acc2, v2) -> acc2 * Character.digit(v2, 10)));
+    return nb == CharSeq.of(str)
+        .foldLeft(0L, (acc, v) -> acc + (long)Math.pow(Character.digit(v, 10), str.length()));
   }
 
   public static void main(String[] args) {
